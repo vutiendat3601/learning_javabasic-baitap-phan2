@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Bai04 extends JFrame implements ActionListener {
+
     private JTextField inputField;
     private double firstNumber;
     private String operator;
@@ -19,15 +20,14 @@ public class Bai04 extends JFrame implements ActionListener {
         inputField.setEditable(false);
         add(inputField, BorderLayout.NORTH);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(4, 4));
+        JPanel buttonPanel = new JPanel(new GridLayout(4, 5)); // Sửa GridLayout thành 5x4 để thêm hàng nút
         add(buttonPanel, BorderLayout.CENTER);
 
         String[] buttonLabels = {
-                "7", "8", "9", "/",
-                "4", "5", "6", "*",
-                "1", "2", "3", "-",
-                "0", ".", "=", "+"
-        };
+            "7", "8", "9", "/", "sqrt",
+            "4", "5", "6", "*", "%",
+            "1", "2", "3", "-", "1/x",
+            "0", ".", "C", "+", "=",};
 
         for (String label : buttonLabels) {
             JButton button = new JButton(label);
@@ -72,6 +72,20 @@ public class Bai04 extends JFrame implements ActionListener {
                     break;
             }
 
+            inputField.setText(String.valueOf(result));
+        } else if (command.equals("%")) {
+            double value = Double.parseDouble(inputField.getText());
+            double result = value / 100.0;
+            inputField.setText(String.valueOf(result));
+        } else if (command.equals("C")) {
+            inputField.setText("");
+        } else if (command.equals("1/x")) {
+            double value = Double.parseDouble(inputField.getText());
+            double result = 1.0 / value;
+            inputField.setText(String.valueOf(result));
+        } else if (command.equals("sqrt")) {
+            double value = Double.parseDouble(inputField.getText());
+            double result = Math.sqrt(value);
             inputField.setText(String.valueOf(result));
         }
     }
