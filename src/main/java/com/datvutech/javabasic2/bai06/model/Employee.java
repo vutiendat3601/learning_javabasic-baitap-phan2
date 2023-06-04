@@ -1,18 +1,18 @@
-package com.datvutech.javabasic2.bai06;
+package com.datvutech.javabasic2.bai06.model;
 
 public class Employee {
     private String id;
     private String fullName;
     private String joinedDate;
     private String birthday;
-    private String department;
+    private int departmentId;
 
-    public Employee(String id, String fullName, String joinedDate, String birthday, String department) {
+    public Employee(String id, String fullName, String joinedDate, String birthday, int departmentId) {
         this.id = id;
         this.fullName = fullName;
         this.joinedDate = joinedDate;
         this.birthday = birthday;
-        this.department = department;
+        this.departmentId = departmentId;
     }
 
     public String getId() {
@@ -47,16 +47,16 @@ public class Employee {
         this.birthday = birthday;
     }
 
-    public String getDepartment() {
-        return department;
+    public int getDepartment() {
+        return departmentId;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setDepartment(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     @Override
     public String toString() {
-        return fullName;
+        return id + " - "+ fullName;
     }
 }
